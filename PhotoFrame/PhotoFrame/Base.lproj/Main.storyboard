@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PhotoFrame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjK-U4-YBi">
+                                <rect key="frame" x="43" y="220" width="328" height="457"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Boat" translatesAutoresizingMaskIntoConstraints="NO" id="xtK-Os-LEz">
+                                        <rect key="frame" x="21" y="25" width="286" height="407"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="286" id="DLn-BY-Uia"/>
+                                            <constraint firstAttribute="height" constant="407" id="wrg-nu-Zzx"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.36183866520517882" green="0.29280133232543415" blue="0.2782216884103752" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="457" id="Dcb-HL-mEx"/>
+                                    <constraint firstAttribute="bottom" secondItem="xtK-Os-LEz" secondAttribute="bottom" constant="25" id="HSy-aE-L3L"/>
+                                    <constraint firstItem="xtK-Os-LEz" firstAttribute="top" secondItem="fjK-U4-YBi" secondAttribute="top" constant="25" id="I8P-TF-Ubm"/>
+                                    <constraint firstAttribute="width" constant="328" id="JCk-li-obW"/>
+                                    <constraint firstItem="xtK-Os-LEz" firstAttribute="leading" secondItem="fjK-U4-YBi" secondAttribute="leading" constant="21" id="jW6-3Q-wer"/>
+                                    <constraint firstAttribute="trailing" secondItem="xtK-Os-LEz" secondAttribute="trailing" constant="21" id="zSr-Xh-UBj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.51520436713256335" green="0.56362874220726689" blue="0.6297922822617994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fjK-U4-YBi" secondAttribute="trailing" constant="43" id="Rku-Fr-VgP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fjK-U4-YBi" secondAttribute="bottom" constant="185" id="X4X-UI-9Nx"/>
+                            <constraint firstItem="fjK-U4-YBi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="43" id="gEg-LI-Ka2"/>
+                            <constraint firstItem="fjK-U4-YBi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="176" id="iuV-Oe-to4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-217.39130434782609" y="78.348214285714278"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Boat" width="640" height="960"/>
+    </resources>
+</document>

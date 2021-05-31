@@ -1,0 +1,6 @@
+framework module Pods_LoginExemploMVVM {
+  umbrella header "Pods-LoginExemploMVVM-umbrella.h"
+
+  export *
+  module * { export * }
+}

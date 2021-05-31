@@ -1,0 +1,71 @@
+PODS:
+  - Action (4.2.0):
+    - RxCocoa (< 7.0, >= 5.0)
+    - RxSwift (< 7.0, >= 5.0)
+  - Differentiator (4.0.1)
+  - "NSObject+Rx (5.1.0)":
+    - RxSwift (~> 5.1)
+  - Realm (5.1.0):
+    - Realm/Headers (= 5.1.0)
+  - Realm/Headers (5.1.0)
+  - RealmSwift (5.1.0):
+    - Realm (= 5.1.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRealm (3.0.0):
+    - RealmSwift (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRealmDataSources (0.3):
+    - RealmSwift (~> 5.1)
+    - RxCocoa (~> 5.1)
+    - RxRealm (~> 3.0)
+    - RxSwift (~> 5.1)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+
+DEPENDENCIES:
+  - Action (~> 4.0)
+  - "NSObject+Rx (~> 5.1)"
+  - RealmSwift (= 5.1.0)
+  - RxCocoa (= 5.1.1)
+  - RxDataSources (~> 4.0)
+  - RxRealm (= 3.0.0)
+  - RxRealmDataSources (= 0.3.0)
+  - RxSwift (= 5.1.1)
+
+SPEC REPOS:
+  trunk:
+    - Action
+    - Differentiator
+    - "NSObject+Rx"
+    - Realm
+    - RealmSwift
+    - RxCocoa
+    - RxDataSources
+    - RxRealm
+    - RxRealmDataSources
+    - RxRelay
+    - RxSwift
+
+SPEC CHECKSUMS:
+  Action: 5dc2194f7a0b77857c82a677b0da655f197c005f
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
+  Realm: bdea546851e37b4cf0a2400cef115c7c26fda488
+  RealmSwift: 70945aa168db93b215c460e9c8ef680261aa28af
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRealm: af7a3c857efd5a711c176f6df0d67418ad48293b
+  RxRealmDataSources: 3607aa8cae303f46a1cdf451a255a8f2ebb0fcbe
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+
+PODFILE CHECKSUM: 0b1ed9682a156f6f622a6fa92537098dbecabe85
+
+COCOAPODS: 1.10.1
