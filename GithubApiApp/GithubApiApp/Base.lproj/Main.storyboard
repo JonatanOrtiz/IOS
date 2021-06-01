@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6di-8e-azu">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--GithubGetRepos-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="GithubGetRepos" id="BYZ-38-t0r" customClass="ViewController" customModule="GithubApiApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="9cE-oG-Duv">
+                                <rect key="frame" x="57" y="401.5" width="300" height="93"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qm7-dJ-tdw">
+                                        <rect key="frame" x="25" y="0.0" width="250" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="W8y-Zl-N5q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNG-uZ-IKg">
+                                        <rect key="frame" x="121.5" y="63" width="57" height="30"/>
+                                        <state key="normal" title="Verificar"/>
+                                        <connections>
+                                            <action selector="checkButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="TT2-fS-tay"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="J2f-ff-qRA"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9cE-oG-Duv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HAd-ej-oka"/>
+                            <constraint firstItem="9cE-oG-Duv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qoa-tH-7Z2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="GithubGetRepos" id="X4d-aO-PXR"/>
+                    <connections>
+                        <outlet property="userName" destination="qm7-dJ-tdw" id="NuH-F7-hJR"/>
+                        <segue destination="ga4-eo-k51" kind="show" identifier="showReposSegue" id="Q8Z-cD-ycl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1920.289855072464" y="67.633928571428569"/>
+        </scene>
+        <!--Repositórios-->
+        <scene sceneID="wGr-EH-eGg">
+            <objects>
+                <viewController storyboardIdentifier="TableViewController" id="ga4-eo-k51" customClass="TableViewController" customModule="GithubApiApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4nW-ZX-TgC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="PAf-MM-Xu3" customClass="Cell" customModule="GithubApiApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PAf-MM-Xu3" id="aeP-Xn-L4p">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVx-c1-BhH">
+                                            <rect key="frame" x="40" y="11" width="334" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="CVx-c1-BhH" firstAttribute="top" secondItem="aeP-Xn-L4p" secondAttribute="topMargin" id="1cm-46-ien"/>
+                                        <constraint firstItem="CVx-c1-BhH" firstAttribute="leading" secondItem="aeP-Xn-L4p" secondAttribute="leadingMargin" constant="20" id="FUZ-Ai-pJ3"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="CVx-c1-BhH" secondAttribute="bottom" constant="0.5" id="jdv-5X-A7B"/>
+                                        <constraint firstItem="CVx-c1-BhH" firstAttribute="centerX" secondItem="aeP-Xn-L4p" secondAttribute="centerX" id="mA4-eD-v4k"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="repoName" destination="CVx-c1-BhH" id="XcK-P6-SSf"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Repositórios" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="bNG-kw-7L9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vw2-09-yRW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2726.0869565217395" y="67.633928571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jym-jQ-rKg">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p0g-Di-cac" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6di-8e-azu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WvK-Oz-rVO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="xUm-ng-aiy"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1112" y="68"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
