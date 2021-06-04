@@ -30,27 +30,39 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             scrollViewDataStruct(title: "first", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-8")),
             scrollViewDataStruct(title: "second", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-5")),
             scrollViewDataStruct(title: "third", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-6")),
-            scrollViewDataStruct(title: "fourth", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-5"))
+            scrollViewDataStruct(title: "fourth", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-5")),
+            scrollViewDataStruct(title: "fifth", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-8")),
+            scrollViewDataStruct(title: "sixth", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-5")),
+            scrollViewDataStruct(title: "seventh", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-6")),
+            scrollViewDataStruct(title: "eighth", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-5")),
+            scrollViewDataStruct(title: "ninth", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-8")),
+            scrollViewDataStruct(title: "tenth", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-5")),
+            scrollViewDataStruct(title: "eleventh", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-6")),
+            scrollViewDataStruct(title: "twelfth", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-5")),
+            scrollViewDataStruct(title: "thirteenth", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-8")),
+            scrollViewDataStruct(title: "fourteenth", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-5")),
+            scrollViewDataStruct(title: "fifteenth", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-6")),
+            scrollViewDataStruct(title: "sixteenth", image: #imageLiteral(resourceName: "Fundo-Teams-modelo-5"))
         ]
         
         scrollView.contentSize.width = self.scrollView.frame.width * CGFloat(scrollViewData.count)
-        var i = 0
-        for data in scrollViewData {
-            let view = CustomView(frame: CGRect(x: self.scrollView.frame.width * CGFloat(i), y: 80, width: self.scrollView.frame.width, height: self.scrollView.frame.height - 90))
-            view.imageView.image = data.image
+        
+        for i in 0...scrollViewData.count - 1 {
+            let view = CustomView(frame: CGRect(x: self.scrollView.frame.width * CGFloat(i), y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.height))
+            view.imageView.image = scrollViewData[i].image
             view.tag = i + viewTagValue
             self.scrollView.addSubview(view)
             
+            let labelInitialPoint = scrollView.frame.width * CGFloat(i)
+            
             let label = UILabel(frame: CGRect(origin: CGPoint(x: 0, y: 35), size: CGSize(width: 0, height: 40)))
-            label.text = data.title
-            label.textColor = .black
+            label.text = scrollViewData[i].title
+            label.textColor = .white
             label.font = UIFont.boldSystemFont(ofSize: 30)
             label.sizeToFit()
-            label.center.x = (i == 0) ? view.center.x : view.center.x - self.scrollView.frame.width / 2
+            label.center.x = view.center.x - labelInitialPoint / 4
             label.tag = tagValue + i
             self.scrollView.addSubview(label)
-            
-            i += 1
         }
     }
     
@@ -58,10 +70,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         if scrollView == scrollView {
             for i in 0..<scrollViewData.count {
                 let label = scrollView.viewWithTag(i + tagValue) as! UILabel
-                let view = scrollView.viewWithTag(i + viewTagValue) as! CustomView
-                let scrollContentOffset = scrollView.contentOffset.x + self.scrollView.frame.width
-                let viewOffset = (view.center.x - scrollView.bounds.width / 4) - scrollContentOffset
-                label.center.x = scrollContentOffset - ((scrollView.bounds.width / 4 - viewOffset) / 2)
+                let wantedLabelOffset = scrollView.contentOffset.x / 4
+                    label.transform = CGAffineTransform.identity.translatedBy(x: wantedLabelOffset, y: 0.0)
             }
         }
     }
