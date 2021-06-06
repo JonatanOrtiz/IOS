@@ -786,3 +786,72 @@
 //
 //isKindOfTest()
 
+//import Foundation
+//
+//let filteredRecipe = ["category", ""]
+//
+//if (filteredRecipe.filter { $0 == "A" }).isEmpty {
+//    print("empty")
+//}
+// MARK: - extension protocol class don't need to implement what is in the extension
+//protocol Test {
+//    func testFunc()
+//}
+//
+//extension Test {
+//    func testFunc() {
+//        print("FOI")
+//    }
+//}
+//
+//class testClass: Test {
+//
+//}
+
+// MARK: - get set on property test
+//class Test {
+//    var z = 2
+//
+//    var x: Int {
+//        get {
+//            return z
+//        }
+//        set {
+//            z = 4
+//        }
+//    }
+//
+//
+//}
+//
+//var test = Test()
+//test.x = 5
+//test.z
+//test.z = 3
+//test.z
+
+// MARK: - optional inside if condition
+//class Test {
+//    func funcTest() -> Bool {
+//        return true
+//    }
+//}
+//var test: Test?
+//// if the class is not instantiate the if condition will be nil, so falls to the false condition, so by instantiating the class the if condition will be true because of the returning true of the function declaration
+//test = Test()
+//test?.funcTest()
+//
+//var x = 2
+//var z = 4
+//if test?.funcTest() ?? false {
+//   z = 5
+//}
+
+// MARK: - variable conform to class protocol
+//protocol X: class {
+//    func test()
+//}
+//
+//class Z {
+//    var Y: X?
+//}
