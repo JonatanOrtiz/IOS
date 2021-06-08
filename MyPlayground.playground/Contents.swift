@@ -855,3 +855,24 @@
 //class Z {
 //    var Y: X?
 //}
+
+// MARK: - dictionary on initialization of a Struct
+//struct Person {
+//
+//    let first: String
+//    let last: String
+//
+//}
+//
+//extension Person {
+//
+//    init(dictionary: [String: String]) {
+//        self.first = dictionary["first"] ?? "John"
+//        self.last = dictionary["last"] ?? "Doe"
+//    }
+//
+//}
+//var person = Person(dictionary: ["first" : "HEY", "last" : "HOY"])
+//
+//person.first
+//person.last
