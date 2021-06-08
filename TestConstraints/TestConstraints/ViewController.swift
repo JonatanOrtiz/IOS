@@ -42,8 +42,17 @@ class ViewController: UIViewController {
         return shape
     }()
     
+    lazy var trackShape: CAShapeLayer = {
+        var trackShape = CAShapeLayer()
+        trackShape.lineWidth = 15
+        trackShape.strokeColor = UIColor.lightGray.cgColor
+        trackShape.fillColor = UIColor.clear.cgColor
+        return trackShape
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.layer.addSublayer(trackShape)
         view.layer.addSublayer(shape)
         setupConstraints()
         
@@ -51,7 +60,14 @@ class ViewController: UIViewController {
     
     override func viewLayoutMarginsDidChange() {
         super.viewLayoutMarginsDidChange()
-        shape.path = UIBezierPath(arcCenter: view.center, radius: 25, startAngle: 0, endAngle: .pi * 2, clockwise: true).cgPath
+        shape.path = UIBezierPath(
+            arcCenter: view.center,
+            radius: 25,
+            startAngle: -(.pi / 2),
+            endAngle: .pi * 2,
+            clockwise: true
+        ).cgPath
+        trackShape.path = shape.path
     }
     
     func setupConstraints() {
@@ -69,6 +85,8 @@ class ViewController: UIViewController {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue = 1
         animation.duration = 3
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
         shape.add(animation, forKey: "animation")
     }
     
