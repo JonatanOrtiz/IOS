@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var animationControl = false
+    
     let someRedView: UIView = {
         let someRedView = UIView()
         someRedView.backgroundColor = .red
@@ -54,15 +56,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.layer.addSublayer(trackShape)
         view.layer.addSublayer(shape)
+        view.addSubview(someRedView)
+        view.addSubview(someBlueView)
+        view.addSubview(button)
         setupConstraints()
-        
     }
     
     override func viewLayoutMarginsDidChange() {
         super.viewLayoutMarginsDidChange()
         shape.path = UIBezierPath(
             arcCenter: view.center,
-            radius: 25,
+            radius: 50,
             startAngle: -(.pi / 2),
             endAngle: .pi * 2,
             clockwise: true
@@ -71,57 +75,76 @@ class ViewController: UIViewController {
     }
     
     func setupConstraints() {
-        view.addSubview(someRedView)
-        someRedView.customAnchor(centerY: (anchor: view.centerYAnchor, constant: 0), leading: (anchor: view.leadingAnchor, constant: 0), trailing: (anchor: view.trailingAnchor, constant: 0), anchorHeight: (anchor: view.heightAnchor, multiplier: 1/3, constant: 0))
+        view.removeAllConstraints()
         
-        view.addSubview(someBlueView)
-        someBlueView.customAnchor(top: (anchor: someRedView.bottomAnchor, constant: 0), leading: (anchor: view.leadingAnchor, constant: 0), trailing: (anchor: view.trailingAnchor, constant: 0), bottom: (anchor: view.bottomAnchor, constant: 0))
+        someRedView.customAnchor(
+            centerY: (anchor: view.centerYAnchor, constant: 0),
+            leading: (anchor: view.leadingAnchor, constant: 0),
+            trailing: (anchor: view.trailingAnchor, constant: 0),
+            anchorHeight: (anchor: view.heightAnchor, multiplier: 1/3, constant: 0)
+        )
+        someBlueView.customAnchor(
+            top: (anchor: someRedView.bottomAnchor, constant: 0),
+            leading: (anchor: view.leadingAnchor, constant: 0),
+            trailing: (anchor: view.trailingAnchor, constant: 0),
+            bottom: (anchor: view.bottomAnchor, constant: 0)
+        )
+        button.customAnchor(
+            centerX: (anchor: view.centerXAnchor, constant: 0),
+            bottom: (anchor: view.bottomAnchor, constant: 40),
+            width: 200,
+            height: 50
+        )
         
-        view.addSubview(button)
-        button.customAnchor(centerX: (anchor: view.centerXAnchor, constant: 0), top: (anchor: view.safeAreaLayoutGuide.bottomAnchor, constant: -50), bottom: (anchor: view.safeAreaLayoutGuide.bottomAnchor, constant: 0), width: 200)
+        view.updateConstraints()
+    }
+    
+    func changeConstraints() {
+        var notchSpace: CGFloat = 0
+        
+        if UIDevice.current.hasNotch {
+            notchSpace = 50
+        }
+        
+        view.removeAllConstraints()
+        
+        someRedView.customAnchor(
+            top: (anchor: view.topAnchor, constant: 0),
+            leading: (anchor: view.leadingAnchor, constant: 0),
+            trailing: (anchor: view.trailingAnchor, constant: 0),
+            anchorHeight: (anchor: view.heightAnchor, multiplier: 1/3, constant: 0)
+        )
+        someBlueView.customAnchor(
+            top: (anchor: someRedView.bottomAnchor, constant: 0),
+            leading: (anchor: view.leadingAnchor, constant: 0),
+            trailing: (anchor: view.trailingAnchor, constant: 0),
+            anchorHeight: (anchor: view.heightAnchor, multiplier: 1/3, constant: 0)
+        )
+        button.customAnchor(
+            centerX: (anchor: view.centerXAnchor, constant: 0),
+            top: (anchor: view.topAnchor, constant: notchSpace),
+            width: 200,
+            height: 50
+        )
+        
+        view.updateConstraints()
     }
     
     @objc func didTapButton() {
+        animationControl.toggle()
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue = 1
         animation.duration = 3
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards
         shape.add(animation, forKey: "animation")
+        
+        animationControl == true ? changeConstraints() : setupConstraints()
+        
+        UIView.animate(withDuration: 2, delay: 0.5, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+//        print(shape.strokeEnd.)
     }
-    
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        super.viewWillTransition(to: size, with: coordinator)
-//        if UIDevice.current.orientation.isLandscape {
-//            print("Landscape")
-//        } else {
-//            print("Portrait")
-//        }
-//    }
-    
 }
-
-//extension UIView {
-//
-//    public func removeAllConstraints() {
-//        var _superview = self.superview
-//
-//        while let superview = _superview {
-//            for constraint in superview.constraints {
-//
-//                if let first = constraint.firstItem as? UIView, first == self {
-//                    superview.removeConstraint(constraint)
-//                }
-//
-//                if let second = constraint.secondItem as? UIView, second == self {
-//                    superview.removeConstraint(constraint)
-//                }
-//            }
-//
-//            _superview = superview.superview
-//        }
-//
-//        self.removeConstraints(self.constraints)
-//        self.translatesAutoresizingMaskIntoConstraints = true
-//    }
-//}

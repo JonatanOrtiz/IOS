@@ -14,6 +14,7 @@
 		B760F62A266EBFE400F6534B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B760F629266EBFE400F6534B /* Assets.xcassets */; };
 		B760F62D266EBFE400F6534B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B760F62B266EBFE400F6534B /* LaunchScreen.storyboard */; };
 		B760F6B12670277700F6534B /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760F6B02670277700F6534B /* UIView+Constraints.swift */; };
+		B760F6B52671720D00F6534B /* UIDevice+Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760F6B42671720D00F6534B /* UIDevice+Devices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B760F62C266EBFE400F6534B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B760F62E266EBFE400F6534B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B760F6B02670277700F6534B /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		B760F6B42671720D00F6534B /* UIDevice+Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Devices.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		B760F6AF2670276100F6534B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B760F6B42671720D00F6534B /* UIDevice+Devices.swift */,
 				B760F6B02670277700F6534B /* UIView+Constraints.swift */,
 			);
 			path = Extensions;
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B760F625266EBFE300F6534B /* ViewController.swift in Sources */,
+				B760F6B52671720D00F6534B /* UIDevice+Devices.swift in Sources */,
 				B760F621266EBFE300F6534B /* AppDelegate.swift in Sources */,
 				B760F623266EBFE300F6534B /* SceneDelegate.swift in Sources */,
 				B760F6B12670277700F6534B /* UIView+Constraints.swift in Sources */,
