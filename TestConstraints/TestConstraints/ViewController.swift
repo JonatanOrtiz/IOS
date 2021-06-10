@@ -39,6 +39,7 @@ class ViewController: UIViewController {
         var label = UILabel()
         label.text = "\(count.description)%"
         label.textColor = .white
+        label.alpha = 0.5
         label.font = UIFont.boldSystemFont(ofSize: 26)
         label.lineBreakMode = .byCharWrapping
         return label
@@ -56,7 +57,7 @@ class ViewController: UIViewController {
     lazy var trackShape: CAShapeLayer = {
         var trackShape = CAShapeLayer()
         trackShape.lineWidth = 15
-        trackShape.strokeColor = UIColor.lightGray.cgColor
+        trackShape.strokeColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.1)
         trackShape.fillColor = UIColor.clear.cgColor
         return trackShape
     }()
@@ -64,19 +65,14 @@ class ViewController: UIViewController {
     var count = 0
     
     var timer: Timer?
-
-    @objc func timerCounter() {
-        count += 1
-        label.text = "\(count.description)%"
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.layer.addSublayer(trackShape)
-        view.layer.addSublayer(shape)
         view.addSubview(someRedView)
         view.addSubview(someBlueView)
         view.addSubview(button)
+        view.layer.addSublayer(trackShape)
+        view.layer.addSublayer(shape)
         view.addSubview(label)
         setupConstraints()
         
@@ -92,6 +88,7 @@ class ViewController: UIViewController {
             clockwise: true
         ).cgPath
         trackShape.path = shape.path
+
     }
     
     func setupConstraints() {
@@ -158,20 +155,28 @@ class ViewController: UIViewController {
         view.updateConstraints()
     }
     
+    @objc func timerCounter() {
+        label.text = "\(count.description)%"
+        label.alpha = CGFloat(Double(count)/100.00 + 0.15)
+        self.view.layoutIfNeeded()
+        shape.strokeColor = CGColor(red: CGFloat(Double.random(in: 0...1)), green: CGFloat(Double.random(in: 0...1)), blue: CGFloat(Double.random(in: 0...1)), alpha: 1)
+        count += 1
+    }
+    
     @objc func didTapButton() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
         timer?.fire()
         animationControl.toggle()
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue = 1
-        animation.duration = 101
+        animation.duration = 12.5
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards
         shape.add(animation, forKey: "animation")
         
         animationControl == true ? changeConstraints() : setupConstraints()
         
-        UIView.animate(withDuration: 100, delay: 0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 10, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
         }, completion: { _ in
             self.timer?.invalidate()
