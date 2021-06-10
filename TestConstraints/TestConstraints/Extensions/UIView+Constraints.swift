@@ -121,7 +121,7 @@ public extension UIView {
         return constraint
     }
     
-    public func removeAllConstraints() {
+    func removeAllConstraints() {
         var _superview = self.superview
 
         while let superview = _superview {

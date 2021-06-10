@@ -34,6 +34,15 @@ class ViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         return button
     }()
+    
+    lazy var label: UILabel = {
+        var label = UILabel()
+        label.text = "\(count.description)%"
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 26)
+        label.lineBreakMode = .byCharWrapping
+        return label
+    }()
 
     lazy var shape: CAShapeLayer = {
         var shape = CAShapeLayer()
@@ -52,6 +61,15 @@ class ViewController: UIViewController {
         return trackShape
     }()
     
+    var count = 0
+    
+    var timer: Timer?
+
+    @objc func timerCounter() {
+        count += 1
+        label.text = "\(count.description)%"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layer.addSublayer(trackShape)
@@ -59,7 +77,9 @@ class ViewController: UIViewController {
         view.addSubview(someRedView)
         view.addSubview(someBlueView)
         view.addSubview(button)
+        view.addSubview(label)
         setupConstraints()
+        
     }
     
     override func viewLayoutMarginsDidChange() {
@@ -77,6 +97,10 @@ class ViewController: UIViewController {
     func setupConstraints() {
         view.removeAllConstraints()
         
+        label.customAnchor(
+            centerX: (anchor: view.centerXAnchor, constant: 0),
+            centerY: (anchor: view.centerYAnchor, constant: 0)
+        )
         someRedView.customAnchor(
             centerY: (anchor: view.centerYAnchor, constant: 0),
             leading: (anchor: view.leadingAnchor, constant: 0),
@@ -108,6 +132,10 @@ class ViewController: UIViewController {
         
         view.removeAllConstraints()
         
+        label.customAnchor(
+            centerX: (anchor: view.centerXAnchor, constant: 0),
+            centerY: (anchor: view.centerYAnchor, constant: 0)
+        )
         someRedView.customAnchor(
             top: (anchor: view.topAnchor, constant: 0),
             leading: (anchor: view.leadingAnchor, constant: 0),
@@ -131,20 +159,24 @@ class ViewController: UIViewController {
     }
     
     @objc func didTapButton() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
+        timer?.fire()
         animationControl.toggle()
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue = 1
-        animation.duration = 3
+        animation.duration = 101
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards
         shape.add(animation, forKey: "animation")
         
         animationControl == true ? changeConstraints() : setupConstraints()
         
-        UIView.animate(withDuration: 2, delay: 0.5, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 100, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
-        }, completion: nil)
-        
-//        print(shape.strokeEnd.)
+        }, completion: { _ in
+            self.timer?.invalidate()
+            self.count = 0
+        })
     }
+    
 }
